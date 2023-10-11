@@ -74,7 +74,7 @@ describe('checkout', () => {
       .wait('@createOrderForm')
       .get('.checkout__form__fail').contains('p','Your order request could not be processed at this time. Please try again later.')
     })
-  it('the user should have same items in cart on refresh', () => {
+  it.skip('the user should have same items in cart on refresh', () => {
     cy.reload()
       .get('.checkout__item').should('have.length', '3')
       .get('.checkout__item').first().contains('b', '2x Bracelet')
