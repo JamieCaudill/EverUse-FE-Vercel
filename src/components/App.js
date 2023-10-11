@@ -32,8 +32,6 @@ function App() {
 
   useEffect(() => {
     setCookie('shoppingBag', shoppingBag, { path: '/' })
-    console.log(cookies)
-    console.log('heyo')
   }, [shoppingBag])
 
   const addTotalPrice = () => {
