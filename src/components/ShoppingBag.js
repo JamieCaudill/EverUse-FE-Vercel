@@ -5,13 +5,13 @@ import { HashLink } from 'react-router-hash-link';
 import { camelToPascalCase } from '../helperFunctions';
 import Nav from './Nav/Nav';
 
-const ShoppingBag = ({ shoppingBag, totalPrice, removeItemFromBag, updateQuantity }) => {
+const ShoppingBag = ({shoppingBag, totalPrice, removeItemFromBag, updateQuantity, altText}) => {
   
   const items = shoppingBag.map(item => {
     return (
     <article key={item.id} className='item'>
       <div className='item__img-container'>
-        <img src={item.image} alt={item.type} className='item__img' />
+        <img src={item.image} alt={altText[item.type]} className='item__img' />
       </div>
       <span className='item__info'>
         <h4>{camelToPascalCase(item.type)}</h4>
