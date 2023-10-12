@@ -101,7 +101,7 @@ const ProductDetailOrderForm = ({product, addToShoppingBag, shoppingBag, updateQ
   return (
     <form className="details-order-form">
       {product?.name && <div className="details-order-form__title">
-        <p>{camelToPascalCase(product.name)}</p>
+        <h3>{camelToPascalCase(product.name)}</h3>
         <p>${product.price}</p>
       </div>}
       <div className="details-order-form__selection-pair">
