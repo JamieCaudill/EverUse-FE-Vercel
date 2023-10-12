@@ -26,7 +26,7 @@ const Home = ({itemsForDisplay, setItems, altText}) => {
   }, [data, itemsForDisplay.length, loading, error, setItems]);
 
   return (
-    <>
+    <main>
       {loading && <>
         <LoadSpinner />
       </>}
@@ -37,7 +37,7 @@ const Home = ({itemsForDisplay, setItems, altText}) => {
       <Products setOpen={setOpen} itemsForDisplay={itemsForDisplay} errorMessage={errorMessage} altText={altText} />
       <About setOpen={setOpen}/>
       </>}
-    </>
+    </main>
   )
 };
 
