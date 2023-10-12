@@ -32,10 +32,10 @@ const Nav = ({open, setOpen}) => {
       <div className={navClass}>
         <h1>
           <Link to="/">
-              <img
-              src={require("../../images/logo-white.png")}
-              alt="EverUse home"
-              className="nav__logo"
+            <img
+            src={require("../../images/logo-white.png")}
+            alt="EverUse home"
+            className="nav__logo"
             />
           </Link>
         </h1>
