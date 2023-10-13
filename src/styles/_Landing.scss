@@ -3,6 +3,7 @@
 
 .landing {
   position: relative;
+  background-color: v.$secondary-background-color;
   background-image: url('../images/landing-bg.png');
   background-size: cover;
   background-repeat: no-repeat;
@@ -19,7 +20,7 @@
     display: flex;
     @include m.flex-column;
     justify-content: flex-start;
-    h1 {
+    h2 {
       @include m.header-font;
       font-size: 2.5rem;
       color: v.$primary-text-color;

@@ -101,7 +101,7 @@ const ProductDetailOrderForm = ({product, addToShoppingBag, shoppingBag, updateQ
   return (
     <form className="details-order-form">
       {product?.name && <div className="details-order-form__title">
-        <p>{camelToPascalCase(product.name)}</p>
+        <h3>{camelToPascalCase(product.name)}</h3>
         <p>${product.price}</p>
       </div>}
       <div className="details-order-form__selection-pair">
@@ -109,13 +109,13 @@ const ProductDetailOrderForm = ({product, addToShoppingBag, shoppingBag, updateQ
          <SizeOptionsContainer isSingleSize={isSingleSize} handleSelect={handleSelect}/>
       </div>
       <div className="details-order-form__selection-pair">
-         <label className="details-order-form__selection-text details-order-form__color-options">Color:</label> 
+         <label htmlFor="colorOptions"  className="details-order-form__selection-text details-order-form__color-options">Color:</label> 
          <select id="colorOptions" className={!inputFields.color? "details-order-form__faded":""} value={inputFields.color} onChange={(e)=> {handleSelect(e.target.value, "color")}}>
           <ColorOptionsCode />
          </select>
       </div>
       <div className="details-order-form__selection-pair">
-         <label className="details-order-form__selection-text details-order-form__quantity-options">Quantity:</label> 
+         <label htmlFor="quantityOptions" className="details-order-form__selection-text details-order-form__quantity-options">Quantity:</label> 
          <select id="quantityOptions" className={!inputFields.quantity? "details-order-form__faded":""} value={inputFields.quantity} onChange={(e) => {handleSelect(e.target.value, "quantity")}}>
             <option value={1}> 1 </option>
             <option value={2}> 2 </option>
@@ -132,13 +132,10 @@ const ProductDetailOrderForm = ({product, addToShoppingBag, shoppingBag, updateQ
         <button disabled={!isFormHealthy} className={isFormHealthy? "details-order-form__submit-btn": "details-order-form__faded-btn"}  onClick={(e) => {saveItem(e)}}>
           Add to Bag
         </button>
-        {/* <Link to={'/shopping-bag'}> */}
-          <button onClick={(e) => {navigateToCart(e)}} disabled={!shoppingBag.length} className={shoppingBag.length? "details-order-form__submit-btn": "details-order-form__faded-btn"}>
-            <p> Cart <span className={totalQuantity? "details-order-form__cart-count": "details-order-form__hidden"}>{totalQuantity? totalQuantity: ""}</span></p>
-          </button>
-        {/* </Link> */}
+        <button onClick={(e) => {navigateToCart(e)}} disabled={!shoppingBag.length} className={shoppingBag.length? "details-order-form__submit-btn": "details-order-form__faded-btn"}>
+          <p> Cart <span className={totalQuantity? "details-order-form__cart-count": "details-order-form__hidden"}>{totalQuantity? totalQuantity: ""}</span></p>
+        </button>
       </div>
-      
     </form>
   )
 }

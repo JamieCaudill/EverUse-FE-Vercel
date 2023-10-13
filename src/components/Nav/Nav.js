@@ -30,13 +30,15 @@ const Nav = ({open, setOpen}) => {
   return (
     <div className="nav">
       <div className={navClass}>
-        <Link to="/">
-          <img
+        <h1>
+          <Link to="/">
+            <img
             src={require("../../images/logo-white.png")}
-            alt="logo"
+            alt="EverUse home"
             className="nav__logo"
-          />
-        </Link>
+            />
+          </Link>
+        </h1>
         {home && <Burger openNav={openNav} />}
         {!home && <HomeNav />}
       </div>

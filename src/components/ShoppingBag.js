@@ -5,16 +5,16 @@ import { HashLink } from 'react-router-hash-link';
 import { camelToPascalCase } from '../helperFunctions';
 import Nav from './Nav/Nav';
 
-const ShoppingBag = ({ shoppingBag, totalPrice, removeItemFromBag, updateQuantity }) => {
+const ShoppingBag = ({shoppingBag, totalPrice, removeItemFromBag, updateQuantity, altText}) => {
   
   const items = shoppingBag.map(item => {
     return (
     <article key={item.id} className='item'>
       <div className='item__img-container'>
-        <img src={item.image} alt={item.type} className='item__img' />
+        <img src={item.image} alt={altText[item.type]} className='item__img' />
       </div>
       <span className='item__info'>
-        <h4>{camelToPascalCase(item.type)}</h4>
+        <p className='item__name'>{camelToPascalCase(item.type)}</p>
         <div className='item__details'>
           <div className='item__specs'>
             <p className='item__spec'>Size: {camelToPascalCase(item.size)}</p>
@@ -34,32 +34,32 @@ const ShoppingBag = ({ shoppingBag, totalPrice, removeItemFromBag, updateQuantit
   });
 
   return (
-    <>
-    <Nav />
-    <div className='bag'>
-      <h2>Shopping Bag</h2>
-      {shoppingBag.length ?
-      <div className='bag__contents'>
-        <section className='bag__items'>
-          {items}
-        </section>
-        <section className='bag__summary'>
-          <h3 className='bag__summary-header'>Request Summary</h3>
-          <div className='bag__subtotal'>
-            <p>Order Subtotal:</p>
-            <p className='bag__total'>${totalPrice}</p>
-          </div>
-          <NavLink to='/checkout' className='bag__button bag__button-submit'>Continue to Request</NavLink>
-        </section>
+    <main>
+      <Nav />
+      <div className='bag'>
+        <h2>Shopping Bag</h2>
+        {shoppingBag.length ?
+        <div className='bag__contents'>
+          <section className='bag__items'>
+            {items}
+          </section>
+          <section className='bag__summary'>
+            <h3 className='bag__summary-header'>Request Summary</h3>
+            <div className='bag__subtotal'>
+              <p>Order Subtotal:</p>
+              <p className='bag__total'>${totalPrice}</p>
+            </div>
+            <NavLink to='/checkout' className='bag__button bag__button-submit'>Continue to Request</NavLink>
+          </section>
+        </div>
+        :
+        <div className='bag__empty'>
+          <h3>Your shopping bag is empty.</h3>
+          <HashLink smooth to='/#products' className='bag__button'>Continue Shopping</HashLink>
+        </div>
+        }
       </div>
-      :
-      <div className='bag__empty'>
-        <h3>Your shopping bag is empty.</h3>
-        <HashLink smooth to='/#products' className='bag__button'>Continue Shopping</HashLink>
-      </div>
-      }
-    </div>
-    </>
+    </main>
   )
 };
 

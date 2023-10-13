@@ -10,7 +10,7 @@ import { useQuery } from '@apollo/client';
 import { GET_ALL_ITEMS } from '../api';
 import { useEffect, useState } from 'react';
 
-const Home = ({itemsForDisplay, setItems}) => {
+const Home = ({itemsForDisplay, setItems, altText}) => {
   const { loading, error, data } = useQuery(GET_ALL_ITEMS);
   const [open, setOpen] = useState(false);
   const [errorMessage, setErrorMessage] = useState('');
@@ -26,7 +26,7 @@ const Home = ({itemsForDisplay, setItems}) => {
   }, [data, itemsForDisplay.length, loading, error, setItems]);
 
   return (
-    <>
+    <main>
       {loading && <>
         <LoadSpinner />
       </>}
@@ -34,10 +34,10 @@ const Home = ({itemsForDisplay, setItems}) => {
       {!loading && <>
       <Nav open={open} setOpen={setOpen}/>
       <Landing setOpen={setOpen}/>
-      <Products setOpen={setOpen} itemsForDisplay={itemsForDisplay} errorMessage={errorMessage}/>
+      <Products setOpen={setOpen} itemsForDisplay={itemsForDisplay} errorMessage={errorMessage} altText={altText} />
       <About setOpen={setOpen}/>
       </>}
-    </>
+    </main>
   )
 };
 

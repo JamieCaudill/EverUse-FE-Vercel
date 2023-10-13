@@ -8,27 +8,27 @@ import { Pagination, Mousewheel, Keyboard, Navigation } from 'swiper/modules';
 import { Link } from 'react-router-dom';
 import { camelToPascalCase } from '../helperFunctions';
 
-const Products = ({itemsForDisplay, setOpen, errorMessage}) => {
+const Products = ({itemsForDisplay, setOpen, errorMessage, altText}) => {
   
   const cards = itemsForDisplay.map(item => {
     return (
-        <SwiperSlide key={item.id} >
-          <Link to={`/products/${item.id}`}>
-            <div className="card">
-              <img src={item.image} alt={item.name} className="card__image" />
-              <div className="card__info">
-                <h2 className="card__name">{camelToPascalCase(item.name)}</h2>
-                <p className="card__price">${item.price}</p>
-              </div>
+      <SwiperSlide key={item.id} >
+        <Link to={`/products/${item.id}`}>
+          <div className="card">
+            <img src={item.image} alt={altText[item.name]} className="card__image" />
+            <div className="card__info">
+              <h3 className="card__name">{camelToPascalCase(item.name)}</h3>
+              <p className="card__price">${item.price}</p>
             </div>
-          </Link>
-      </SwiperSlide>
+          </div>
+        </Link>
+    </SwiperSlide>
     )
   });
 
   return (
-    <div id="products" className="products" onClick={() => {setOpen(false)}}>
-      <h1 className="products__header">Products</h1>
+    <section id="products" className="products" onClick={() => {setOpen(false)}}>
+      <h2 className="products__header">Products</h2>
       {errorMessage && <p className="products__error">{errorMessage}</p>}
       <div className="products__container">
         <Swiper
@@ -54,7 +54,7 @@ const Products = ({itemsForDisplay, setOpen, errorMessage}) => {
           {cards}
         </Swiper>
       </div>
-    </div>
+    </section>
   )
 };
 
